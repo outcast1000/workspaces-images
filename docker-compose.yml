@@ -1,15 +1,15 @@
 version: '2'
-# docker run --rm  -it --shm-size=512m -p 6901:6901 -e VNC_PW=ptL7DfG6hXVqEU --network=nginx-proxy-manager kasmweb/desktop-alex:dev
 services:
   ubuntu:
-    build: .
+    build: 
+      context: .
+      dockerfile: dockerfile-kasm-desktop-alex
     restart: unless-stopped
     container_name: ubuntu
     shm_size: '2gb'
     ports:
       - '6901:6901'
     environment:
-      # https://hub.docker.com/_/adminer
       VNC_PW: ptL7DfG6hXVqEU
     networks:
       - nginx-proxy-manager

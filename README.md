@@ -64,3 +64,19 @@ A self-guided on-demand demo is available at [**kasmweb.com**](https://www.kasmw
 NOTE: "-e VNC_USER=alex" IS NOT WORKING
 User : kasm_user
 Password: ptL7DfG6hXVqEU
+
+# Tip: Configure with NPM as the reverse proxy. Use this as a custom configuration:
+
+    ```Config
+    location / {
+    proxy_set_header Authorization $http_authorization;
+    proxy_pass_header Authorization;
+    proxy_pass https://<IP>:<PORT>;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    }
+    ```
+
+IP: you should set the interal local IP or hostname: 'ubuntu'
+PORT: 6901
+See: https://www.reddit.com/r/selfhosted/comments/udfpv2/comment/i6te3o0/?utm_source=share&utm_medium=web2x&context=3
