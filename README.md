@@ -47,15 +47,20 @@ A self-guided on-demand demo is available at [**kasmweb.com**](https://www.kasmw
 ## Tip: Clone the project with this on a windows computer
 
     ```Console
-git clone -c core.autocrlf=false https://github.com/outcast1000/workspaces-images.git .
+    git clone -c core.autocrlf=false https://github.com/outcast1000/workspaces-images.git .
     ```
 
 ## Tip: Build & run it like this
 
     ```Console
-docker build -t kasmweb/desktop-alex:dev -f dockerfile-kasm-desktop-alex .
-docker run --rm  -it --shm-size=512m -p 6901:6901 -e VNC_USER=alex -e VNC_PW=ptL7DfG6hXVqEU kasmweb/desktop-alex:dev
+    docker compose up -d
     ```
-
+    OR
+    
+    ```Console
+    docker build -t kasmweb/desktop-alex:dev -f dockerfile-kasm-desktop-alex .
+    docker run --rm  -it --shm-size=512m -p 6901:6901 -e VNC_PW=ptL7DfG6hXVqEU --network=nginx-proxy-manager kasmweb/desktop-alex:dev
+    ```
+NOTE: "-e VNC_USER=alex" IS NOT WORKING
 User : kasm_user
 Password: ptL7DfG6hXVqEU
